@@ -1,151 +1,55 @@
 # Recovery Center React Application
 
-A modern web application for managing lost and found items with role-based access control and comprehensive request management, designed to work with the Recovery Center Spring Boot backend.
+A modern web application for managing lost and found items with role-based access control, designed to work with the Recovery Center Spring Boot backend.
 
-## 🛠 Tech Stack
+## Tech Stack
 
-- **Frontend**: React 18 + TypeScript
-- **Build Tool**: Vite
-- **Styling**: Tailwind CSS
-- **Routing**: React Router
-- **State Management**: React Context API
-- **HTTP Client**: Axios
-- **Icons**: Heroicons (SVG)
-- **Backend**: Spring Boot (Java 17)
-- **Database**: MySQL 8.0+
-- **Authentication**: JWT with BCrypt password encryption
+-   **Frontend**: React 18 + TypeScript, Vite, Tailwind CSS, React Router
+-   **Backend**: Spring Boot (Java 17), MySQL 8.0+, JWT Authentication
 
-## ✨ Features
+## Features
 
-### Authentication & Authorization
-- User registration and login
-- JWT-based authentication with token management
-- Role-based access control (USER, STAFF, ADMIN)
-- Secure BCrypt password encryption
+-   **Authentication**: JWT-based login/registration with role-based access (USER, STAFF, ADMIN)
+-   **Item Management**: Add, edit, delete items with status tracking (LOST, FOUND, CLAIMED)
+-   **Request System**: Submit, approve/reject requests with admin notes and status tracking
+-   **User Management**: Admin can manage users and roles
+-   **Security**: BCrypt encryption, CORS configuration, comprehensive error handling
 
-### Item Management
-- Add, edit, delete, and view lost/found items
-- Item status tracking (LOST, FOUND, CLAIMED)
-- Detailed item information with descriptions
-- Real-time status tracking through the complete workflow
+## Setup
 
-### Request System
-- Users can submit requests for items
-- Staff/Admin can approve or reject requests
-- Mandatory admin notes for request decisions
-- Request status tracking (PENDING, APPROVED, REJECTED)
-- Transaction management for data consistency
+### Frontend
 
-### User Management (Admin Only)
-- View all users
-- Update user roles
-- Delete users
-- User search and filtering
+```bash
+git clone <repository-url>
+cd recovery-center-app-react
+npm install
+npm run dev
+```
 
-### UI/UX
-- Responsive design with mobile-friendly interfaces
-- Modern and clean interface with Tailwind CSS
-- Loading states and error handling
-- Professional modal dialogs
-- Intuitive navigation and workflows
+### Backend Requirements
 
-### Security Features
-- JWT token-based authentication
-- Role-based authorization
-- CORS configuration for cross-origin requests
-- Comprehensive error handling and logging
+-   Java 17+, MySQL 8.0+, Maven 3.6+
+-   Create database: `recovery_center_db`
+-   Default API endpoint: `http://localhost:8080`
 
-## 🚀 Setup Instructions
+## Usage
 
-### Frontend Setup
+1. Register/Login with your account
+2. Browse and manage lost/found items
+3. Submit requests for items
+4. Admins can manage users and approve requests
 
-1. **Clone the repository**
-   ```bash
-   git clone <repository-url>
-   cd recovery-center-app-react
-   ```
+## User Roles
 
-2. **Install dependencies**
-   ```bash
-   npm install
-   ```
+-   **USER**: Browse items, submit requests, add found items
+-   **STAFF**: User permissions + approve/reject requests
+-   **ADMIN**: All permissions + user management
 
-3. **Start development server**
-   ```bash
-   npm run dev
-   ```
+## API Endpoints
 
-4. **Build for production**
-   ```bash
-   npm run build
-   ```
+-   Authentication: `/api/v1/auth/*`
+-   Items: `/api/v1/items`
+-   Requests: `/api/v1/requests`
+-   Users: `/api/v1/users` (admin only)
 
-### Backend Integration
-
-The frontend is designed to work with the Recovery Center Spring Boot backend:
-
-1. **System Requirements**
-   - Java 17 or higher
-   - MySQL 8.0+
-   - Maven 3.6+ (or use included Maven wrapper)
-
-2. **Database Setup**
-   ```sql
-   CREATE DATABASE recovery_center_db;
-   CREATE USER 'myuser'@'localhost' IDENTIFIED BY 'mypassword';
-   GRANT ALL PRIVILEGES ON recovery_center_db.* TO 'myuser'@'localhost';
-   FLUSH PRIVILEGES;
-   ```
-
-3. **Update Backend API Configuration**
-   - Ensure the Spring Boot application is running
-   - Default endpoint: `http://localhost:8080`
-   - API documentation available at: `/swagger-ui.html`
-
-## 🔧 Configuration
-
-- Update API base URL in `src/services/api.ts` if needed
-- Backend API should be running on the configured endpoint
-- Ensure CORS is properly configured on the backend
-- JWT configuration details in the backend application properties
-
-## 📱 Usage
-
-1. **Register/Login**: Create an account or sign in
-2. **Browse Items**: View all lost and found items
-3. **Submit Requests**: Request items you believe are yours
-4. **Manage Items**: Add items you've found (authenticated users)
-5. **Admin Functions**: Manage users and approve requests (admin only)
-
-## 🎯 User Roles
-
-- **USER**: Can browse items, submit requests, and add found items
-- **STAFF**: All user permissions + approve/reject requests and manage items
-- **ADMIN**: All permissions + user management and system configuration
-
-## 🔗 API Integration
-
-This frontend integrates with a Spring Boot backend API with these key endpoints:
-
-- **Authentication**: `/api/v1/auth/login`, `/api/v1/auth/signup`
-- **Items**: `/api/v1/items`
-- **Requests**: `/api/v1/requests`
-- **Users**: `/api/v1/users` (admin only)
-
-For complete API documentation, visit the Swagger UI at `http://localhost:8080/swagger-ui.html` when running the backend.
-
-## 🔍 Database Schema
-
-The application uses these main data models:
-
-- **Users**: Account information, roles, and authentication details
-- **Items**: Lost or found item records with tracking information
-- **Requests**: Claim requests linking users to items
-
-## 🧩 Project Structure
-
-- `/src/components`: Reusable UI components
-- `/src/contexts`: React Context providers including AuthContext
-- `/src/pages`: Page components for each route
-- `/src/services`: API client and service functions
-- `/src/types`: TypeScript type definitions
+API documentation: `http://localhost:8080/swagger-ui.html`
