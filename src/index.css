@@ -1,0 +1,98 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom styles */
+:root {
+  --primary-color: #1E5669; /* Deep Teal/Blue */
+  --secondary-color: #FF7F50; /* Vibrant Coral/Orange */
+  --success-color: #4CAF50; /* Softer Green */
+  --warning-color: #FFC107; /* Warm Orange */
+  --danger-color: #D32F2F; /* Classic Red */
+  --light-bg: #F5F7FA; /* Very light off-white gray */
+  --dark-text: #333333; /* Dark Charcoal */
+  --light-text: #5A5A5A; /* Medium gray for secondary text */
+  --border-color: #E0E0E0; /* Light gray for borders */
+}
+
+body {
+  margin: 0;
+  /* Using Inter font, fallback to system defaults */
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--light-bg);
+  color: var(--dark-text);
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* Custom component styles */
+@layer components {
+  .btn-primary {
+    /* Using primary-color for background */
+    @apply bg-[var(--primary-color)] hover:bg-[#153F4C] text-white font-semibold py-2 px-4 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)] focus:ring-opacity-50;
+  }
+
+  .btn-secondary {
+    /* Using secondary-color for background */
+    @apply bg-[var(--secondary-color)] hover:bg-[#E66A42] text-white font-semibold py-2 px-4 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-[var(--secondary-color)] focus:ring-opacity-50;
+  }
+
+  .btn-success {
+    @apply bg-[var(--success-color)] hover:bg-[#388E3C] text-white font-semibold py-2 px-4 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-[var(--success-color)] focus:ring-opacity-50;
+  }
+
+  .btn-warning {
+    @apply bg-[var(--warning-color)] hover:bg-[#FFA000] text-gray-900 font-semibold py-2 px-4 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-[var(--warning-color)] focus:ring-opacity-50;
+  }
+
+  .btn-danger {
+    @apply bg-[var(--danger-color)] hover:bg-[#B71C1C] text-white font-semibold py-2 px-4 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-[var(--danger-color)] focus:ring-opacity-50;
+  }
+
+  .form-input {
+    /* Updated border and focus colors */
+    @apply w-full px-3 py-2 border border-[var(--border-color)] rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)] focus:border-transparent;
+  }
+
+  .form-label {
+    /* Updated text color */
+    @apply block text-sm font-medium text-[var(--dark-text)] mb-2;
+  }
+
+  .card {
+    /* Subtle shadow and rounded corners */
+    @apply bg-white rounded-xl shadow-lg p-6;
+  }
+
+  /* Status badges - adjusted colors for better contrast with new palette */
+  .status-lost {
+    @apply bg-red-100 text-[var(--danger-color)] px-2 py-1 rounded-full text-xs font-medium;
+  }
+
+  .status-found {
+    @apply bg-green-100 text-[var(--success-color)] px-2 py-1 rounded-full text-xs font-medium;
+  }
+
+  .status-claimed {
+    @apply bg-yellow-100 text-[var(--warning-color)] px-2 py-1 rounded-full text-xs font-medium;
+  }
+
+  .status-pending {
+    @apply bg-yellow-100 text-[var(--warning-color)] px-2 py-1 rounded-full text-xs font-medium;
+  }
+
+  .status-approved {
+    @apply bg-green-100 text-[var(--success-color)] px-2 py-1 rounded-full text-xs font-medium;
+  }
+
+  .status-rejected {
+    @apply bg-red-100 text-[var(--danger-color)] px-2 py-1 rounded-full text-xs font-medium;
+  }
+}
